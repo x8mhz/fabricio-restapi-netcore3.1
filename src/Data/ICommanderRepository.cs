@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using src.Models;
+﻿using src.Models;
+using System.Collections.Generic;
 
 namespace src.Data
 {
@@ -8,9 +8,9 @@ namespace src.Data
         bool SaveChanges();
 
         IEnumerable<Command> GetAppCommand();
-        Command GetCommandId(int id);
+        Command GetCommandById(int id);
         void Register(Command command);
         void Update(Command command);
-        void Remove(int id);
+        void Remove(Command command);
     }
 }

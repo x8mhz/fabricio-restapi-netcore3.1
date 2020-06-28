@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
 using src.AutoMapper;
 using src.Data;
 
@@ -22,7 +18,7 @@ namespace src
             services.AddAutoMapper(x => x.AddProfile<AutoMapping>(), typeof(Startup));
             services.AddDbContext<CommanderContext>();
             services.AddScoped<ICommanderRepository, SqlCommanderRepository>();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

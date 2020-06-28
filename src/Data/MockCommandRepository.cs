@@ -1,7 +1,5 @@
-﻿using System;
+﻿using src.Models;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using src.Models;
 
 namespace src.Data
 {
@@ -23,18 +21,18 @@ namespace src.Data
         {
              var commands = new List<Command>
                 {
-                    new Command {Id = 0, HowTo = "Boil an egg", Line = "Boil Water", Platform = "Kettle & Pan"},
-                    new Command {Id = 2, HowTo = "Cut bread", Line = "Get a knife", Platform = "knife & Chopping board"},
-                    new Command {Id = 3, HowTo = "Make cup of tea", Line = "Place teabag in cup", Platform = "kettle & cup"}
+                    new Command {Id = 0, HowTo = "Cozinhar ovo", Line = "Esquentar a água", Platform = "Panela"},
+                    new Command {Id = 2, HowTo = "Contar pão", Line = "Pega uma faca", Platform = "Faca"},
+                    new Command {Id = 3, HowTo = "Fazer chá", Line = "Colocar o sachê no copo", Platform = "Chaleira"}
              
                 };
 
              return _context.Set<Command>();
         }
 
-        public Command GetCommandId(int id)
+        public Command GetCommandById(int id)
         {
-            return new Command {Id = 0, HowTo = "Boil an egg", Line = "Boil Water", Platform = "Kettle & Pan"};
+            return new Command {Id = 0, HowTo = "Cozinhar ovo", Line = "Esquentar a água", Platform = "Panela"};
         }
 
         public void Register(Command command)
@@ -50,10 +48,11 @@ namespace src.Data
             throw new System.NotImplementedException();
         }
 
-        public void Remove(int id)
+        public void Remove(Command command)
         {
             //var commandFound = _context.Find<Command>(id);
             //_context.Remove(commandFound);
+
         }
     }
 }

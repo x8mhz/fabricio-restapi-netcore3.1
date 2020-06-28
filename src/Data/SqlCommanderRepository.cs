@@ -1,7 +1,7 @@
-﻿using System;
+﻿using src.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using src.Models;
 
 namespace src.Data
 {
@@ -24,7 +24,7 @@ namespace src.Data
             return _context.Commands.ToList();
         }
 
-        public Command GetCommandId(int id)
+        public Command GetCommandById(int id)
         {
             return _context.Commands.FirstOrDefault(x => x.Id == id);
         }
@@ -40,10 +40,10 @@ namespace src.Data
            // _context.Commands.Update(command);
         }
 
-        public void Remove(int id)
+        public void Remove(Command command)
         {
-            var commandFound = _context.Find<Command>(id);
-            _context.Remove(commandFound);
+            if (command == null) throw new ArgumentException(nameof(command));
+            _context.Remove(command);
         }
     }
 }

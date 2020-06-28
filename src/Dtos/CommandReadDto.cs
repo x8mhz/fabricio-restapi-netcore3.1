@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace src.Dtos
+﻿namespace src.Dtos
 {
     public class CommandReadDto
     {
